@@ -1,0 +1,158 @@
+<%
+var meta = {
+  sitetitle: 'テスト運用',
+  pagetitle: '静的html一覧',
+  description: '●●●',
+};
+%>
+
+<%- include(relativePath + '_inc/_meta',{meta:meta}); %>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<%# Vue 2 仕様 %>
+<script src="/cmn/js/vue.min.js" defer></script>
+<script src="/_dir/js/app.js" defer></script>
+</head>
+
+<body>
+
+<!-- ここから -->
+<article>
+  <div id="app"></div>
+</article>
+<!-- ここまで -->
+
+<style>
+  article {
+    padding: 16px 32px;
+  }
+  .link_list-title{
+    width: 50vw;
+    margin: 0 auto;
+    border-bottom: 1px solid #000;
+  }
+  .link_list-title tr{
+    display: grid;
+    grid-template-columns: 1fr 200px 100px;
+  }
+  .link_list-title-head{
+    border-right: 1px solid #000;
+    padding-bottom: 8px;
+  }
+  .link_list-title-text{
+    border-right: 1px solid #000;
+    padding-left: 16px;
+    padding-bottom: 8px;
+  }
+  .link_list-title-confirm{
+    padding-left: 16px;
+    padding-bottom: 8px;
+  }
+  .link_list{
+    width: 50vw;
+    margin: 0 auto;
+  }
+  .link_list-item{
+    display: grid;
+    grid-template-columns: 1fr 200px 100px;
+  }
+  .link_list-item a{
+    display: block;
+    color: #000;
+    padding: 8px 0;
+  }
+  .link_list-item:hover a{
+    color: #e81521;
+  }
+  .link_list-item + .link_list-item{
+    border-top: 1px solid #000;
+  }
+  .link_list-item-production{
+    position: relative;
+  }
+  .link_list-item-production:hover .link_list-item-production-effects::before{
+    animation: circle-animation .7s ease-out;
+  }
+  .link_list-item-production:hover .link_list-item-production-effects::after{
+    animation: circle-animation .8s .15s ease-out;
+  }
+  .link_list-item-production-effects{
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f36d00;
+    pointer-events: none;
+  }
+  .link_list-item-production-effects::before{
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: 1px solid #f36d00;
+  }
+  .link_list-item-production-effects::after{
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: 1px solid #f36d00;
+  }
+  @keyframes circle-animation {
+    0%{
+      width: 20px;
+      height: 20px;
+    }
+    70%{
+      width: 40px;
+      height: 40px;
+    }
+    100%{
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .link_list-item-production.disabled{
+    pointer-events: none;
+  }
+  .link_list-item-production.disabled .link_list-item-production-effects{
+    background-color: #aaa;
+  }
+  .link_list-item-production.disabled .link_list-item-production-effects::before,
+  .link_list-item-production.disabled .link_list-item-production-effects::after{
+    content: none;
+  }
+  .link_list-item-confirm{
+    font-family: 'Material Icons';
+    background-color: #fefde8;
+    text-align: center;
+  }
+  .link_list-item-confirm.visible{
+    cursor: pointer;
+  }
+  .link_list-item-confirm.visible::before{
+    content: '\e876';
+    color: blue;
+    font-size: 24px;
+  }
+</style>
+
+</body>
+
+</html>
